@@ -70,8 +70,8 @@ class MarketMaker {
         return __awaiter(this, void 0, void 0, function* () {
             let { tradeNeeded, targetTokenAmountToTrade } = yield this.determineTradeNecessity();
             //$1.48
-            targetTokenAmountToTrade = new decimal_js_1.default(10000000);
-            tradeNeeded = true;
+            // targetTokenAmountToTrade = new Decimal(10000000);
+            // tradeNeeded = true;
             if (!tradeNeeded || targetTokenAmountToTrade.equals(0)) {
                 console.log(`no LP change`);
                 return;
