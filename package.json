@@ -1,0 +1,31 @@
+{
+  "name": "EMA_dist",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "start": "node dist/main.js"
+  },
+  "keywords": [
+    "solana",
+    "trading",
+    "bot"
+  ],
+  "author": "Tomas Agustin",
+  "license": "ISC",
+  "dependencies": {
+    "@ixjb94/indicators": "^1.2.2",
+    "@jup-ag/api": "^6.0.11",
+    "@jup-ag/core": "^4.0.0-beta.21",
+    "@project-serum/anchor": "^0.26.0",
+    "@solana/spl-token-registry": "^0.2.4574",
+    "@solana/web3.js": "^1.90.0",
+    "@types/express": "^4.17.21",
+    "bs58": "^5.0.0",
+    "cross-fetch": "^4.0.0",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "jito-ts": "^3.0.1",
+    "jsbi": "^4.3.0",
+    "prettier": "^3.2.5"
+  }
+}
