@@ -236,7 +236,7 @@ class TrendTrade {
                 }
                 if (neededSolAmount <= balance)
                     availableWalletList.push(this.walletList[i]);
-                yield (0, sleep_1.sleep)(200);
+                yield (0, sleep_1.sleep)(20);
             }
             if (maxBalance == 0)
                 return null;
@@ -255,7 +255,7 @@ class TrendTrade {
                     maxBalance = balance;
                     maxWalletNum = i;
                 }
-                yield (0, sleep_1.sleep)(200);
+                yield (0, sleep_1.sleep)(20);
             }
             if (maxBalance == 0)
                 return { wallet: null, balance: 0 };

@@ -24,7 +24,7 @@ const config_1 = require("./config");
 const express_1 = __importDefault(require("express"));
 const app = (0, express_1.default)();
 app.get('/', (req, res) => {
-    res.send('The MM bot is running.');
+    res.send('The Market Maker bot is running.');
 });
 app.listen(process.env.PORT, () => {
     console.log('Example app listening on port 3000!');

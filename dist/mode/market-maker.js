@@ -38,7 +38,9 @@ class MarketMaker {
     }
     getSearcher() {
         const searcher = (0, searcher_1.searcherClient)(this.configs.blockEngineUrl, this.configs.jitoAuthKey);
+        console.log('searcher', searcher);
         searcher.onBundleResult((result) => {
+            console.log(result);
             const isAccepted = result.accepted;
             const isRejected = result.rejected;
             if (isAccepted) {
@@ -78,7 +80,8 @@ class MarketMaker {
             }
             console.log(`target token amount to swap: ${targetTokenAmountToTrade}`);
             const { buyTransaction, sellTransaction, feeTransaction } = yield this.makeTrasactions(targetTokenAmountToTrade);
-            if (!buyTransaction || !sellTransaction)
+            // console.log({ buyTransaction, sellTransaction, feeTransaction });
+            if (!buyTransaction || !sellTransaction || !feeTransaction)
                 return;
             yield (0, send_bundle_1.bull_dozer)(this.connection, this.searcher, [
                 feeTransaction,
@@ -180,7 +183,7 @@ class MarketMaker {
                 console.log(`Balance in wallet(${i + 1}): ${balance}`);
                 if (neededSolAmount.lt(balance))
                     availableWalletList.push(this.walletList[i]);
-                yield (0, sleep_1.sleep)(200);
+                yield (0, sleep_1.sleep)(20);
             }
             if (availableWalletList.length == 0)
                 return;
@@ -218,7 +221,6 @@ class MarketMaker {
             const buyTransaction = yield this.raydiumClient.getSwapTransaction(wallet, quoteBuy);
             if (!buyTransaction)
                 return { buyTransaction: '', sellTransaction: '' };
-            buyTransaction.signatures.toString();
             // console.log(buyTransaction.signatures[0], wallet);
             buyTransaction.sign([wallet]);
             // console.log(buyTransaction.signatures[0]);
@@ -250,7 +252,6 @@ class MarketMaker {
                 return { buyTransaction: '', sellTransaction: '' };
             const sellTransaction = yield this.raydiumClient.getSwapTransaction(wallet, quoteSell);
             // console.log({ sellTransaction });
-            sellTransaction.signatures.toString();
             sellTransaction.sign([wallet]);
             return { buyTransaction, sellTransaction, feeTransaction };
         });
