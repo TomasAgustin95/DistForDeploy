@@ -1,4 +1,8 @@
 node_modules/
+dist/
 .env
 .env.*
 log.txt
+
+pakage-lock.json
+yarn.lock
